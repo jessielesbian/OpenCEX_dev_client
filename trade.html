@@ -17,10 +17,27 @@
 		
 		<!-- load scripts -->
 		<script async src="scripts.js"></script>
-		
+		<style>
+		canvas {
+  height: 150px;
+  width: 300px;
+}
+		ul {
+		 display: inline;
+      list-style-type: none;
+    
+      
+		}
+		li {
+  border-right: 3px solid #bbb;
+    margin-left: 5px;
+      margin-right: 6px;
+}
+
+		</style>
 	</head>
-	<body class="blue-grey darken-3" style="color: white;">
-		<nav class="blue accent-4">
+	<body class="blue-grey darken-3" style="color: #37474f;">
+		<nav style="background-color: #455a64;">
 			<div class="nav-wrapper">
 				<h6 class="brand-logo left"><invalid style="color: pink">Jessie</invalid> <invalid style="color: purple">Lesbian</invalid> cryptocurrency exchange</h6>
 				<ul id="nav-mobile" class="right">
@@ -29,33 +46,36 @@
 				</ul>
 			</div>
 		</nav>
+		<nav id="slide-out" width="100%" background-color="#37474f;">
 		<input type="hidden" id="trading_room">
-		<ul style="z-index: 2022" class="sidenav blue-grey darken-2" id="slide-out">
+		<ul>
 			<!-- MATIC base -->
-			<li class="blue-grey darken-1" id="pair_selector_MATIC_PolyEUBI">MATIC/PolyEUBI</li>
+			
+			
+             <li class="blue-grey darken-1" id="pair_selector_MATIC_PolyEUBI">PolyEUBI</li>
+             
+			
 			
 			<!-- MintME base -->
-			<li class="blue-grey" id="pair_selector_MintME_MATIC">MintME/MATIC</li>
+			<li class="blue-grey darken-1" id="pair_selector_MintME_MATIC">MintME/MATIC</li>
 			<li class="blue-grey darken-1" id="pair_selector_MintME_BNB">MintME/BNB</li>
-			<li class="blue-grey" id="pair_selector_MintME_PolyEUBI">MintME/PolyEUBI</li>
+			<li class="blue-grey darken-1" id="pair_selector_MintME_PolyEUBI">MintME/PolyEUBI</li>
 			<li class="blue-grey darken-1" id="pair_selector_MintME_EUBI">MintME/EUBI</li>
-			<li class="blue-grey" id="pair_selector_MintME_1000x">MintME/1000x</li>
-			
-			<!-- Dai base -->
-			<li class="blue-grey darken-1" id="pair_selector_Dai_PolyEUBI">Dai/PolyEUBI</li>
-			<li class="blue-grey" id="pair_selector_Dai_MATIC">Dai/MATIC</li>
-			<li class="blue-grey darken-1" id="pair_selector_Dai_BNB">Dai/BNB</li>
-			<li class="blue-grey" id="pair_selector_Dai_MintME">Dai/MintME</li>
+			<li class="blue-grey darken-1" id="pair_selector_MintME_1000x">MintME/1000x</li>
 			
 			<!-- BNB base -->
 			<li class="blue-grey darken-1" id="pair_selector_BNB_PolyEUBI">BNB/PolyEUBI</li>
-			
-			<!-- testcoins -->
-			<li class="blue-grey" id="pair_selector_shitcoin_scamcoin" style="display: none">shitcoin/scamcoin</li>
+		
 
 		</ul>
+		</nav>
+		<hr>
+		<section>
+		<canvas  id="tradingchart"></canvas>
+		</section>
+		<hr>
 		<div class="row blue-grey darken-2">
-			<canvas class="col l6 m12 s12" id="tradingchart" style="height: 10em"></canvas>
+			
 			<h6 id="bid_ask"></h6>
 			<div class="col l6 m12 s12 row">
 				<h6>Place your order</h6>
