@@ -18,25 +18,95 @@
 		<!-- load scripts -->
 		<script async src="scripts.js"></script>
 		<style>
-		ul {
-		 display: inline;
-      list-style-type: none;
-    
-      
-		}
+	ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  background-color: #333;
+}
+
 		li {
+	float: left;
+    border-right: 3px solid #455a64;
+    border-left: 3px solid #455a64;
+    margin-left: 2px;
+    margin-right: 2px;
+	text-color: white;
+}
+      h6,p{
+	  color: white;
+ }
+ .navbar {
+  overflow: hidden;
+  background-color: #455a64;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: solid 0.5px;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: yellow;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
     border-right: 3px solid #455a64;
     border-left: 3px solid #455a64;
     margin-left: 2px;
     margin-right: 2px;
 }
-      h6{
-	  color: white;
-	  }
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+	 
 
 		</style>
 	</head>
-	<body class="blue-grey darken-3" style="color: #37474f;">
+	<body class="blue-grey darken-3" style="background-color:#37474f;">
 		<nav style="background-color: #455a64;">
 			<div class="nav-wrapper">
 				<h6 class="brand-logo left"><invalid style="color: pink">JLEX</invalid></h6>
@@ -45,32 +115,37 @@
 					<li><a href="clientarea.html">Return to HOME</a></li>
 				</ul>
 			</div>
-		</nav>
-		<nav id="slide-out" width="100%" background-color="#37474f;">
-		<input type="hidden" id="trading_room">
-		<ul>
-			<!-- MATIC base -->
-			
-			
-             <li class="blue-grey darken-1" id="pair_selector_MATIC_PolyEUBI">MATIC/PEUBI</li>
-             
-			
-			
-			<!-- MintME base -->
-			<li class="blue-grey darken-1" id="pair_selector_MintME_MATIC">MINTME/MATIC</li>
-			<li class="blue-grey darken-1" id="pair_selector_MintME_BNB">MINTME/BNB</li>
-			<li class="blue-grey darken-1" id="pair_selector_MintME_PolyEUBI">MINTME/PEUBI</li>
-			<li class="blue-grey darken-1" id="pair_selector_MintME_EUBI">MINTME/PEUBI</li>
-			<li class="blue-grey darken-1" id="pair_selector_MintME_1000x">MINTME/1000x</li>
-			
-			<!-- BNB base -->
-			<li class="blue-grey darken-1" id="pair_selector_BNB_PolyEUBI">BNB/PEUBI</li>
 		
-
-		</ul>
 		</nav>
+		
+         <div class="subnav">
+		 
+           <button class="subnavbtn">MATIC</button>
+             <div class="subnav-content">
+                <button id="pair_selector_MATIC_PolyEUBI">PEUBI</button>
+             </div>
+           </div>
+		   <div class="subnav">
+           <button class="subnavbtn">BNB</button>
+             <div class="subnav-content">
+                <button id="pair_selector_BNB_PolyEUBI">PEUBI</button>
+             </div>
+           </div>
+		   <div class="subnav">
+           <button class="subnavbtn">MINTME</button>
+             <div class="subnav-content">
+                <button id="pair_selector_MINTME_MATIC">MATIC</button>
+				<button id="pair_selector_MINTME_BNB">BNB</button>
+				<button id="pair_selector_MINTME_PolyEUBI">PEUBI</button>
+				<button id="pair_selector_MINTME_EUBI">EUBI</button>
+				<button id="pair_selector_MINTME_1000X">1000X</button>
+             </div>
+           </div>
+           
+	
 		<hr>
 		<div class="row blue-grey darken-2">
+		    <input type="hidden" id="trading_room">
 			<canvas class="col l6 m12 s12" id="tradingchart" style="height: 10em"></canvas>
 			<h6 id="bid_ask"></h6>
 			<div class="col l6 m12 s12 row">
@@ -124,6 +199,6 @@
 			</div>
 		</div>
 		<a style="z-index: 2021" class="btn-floating btn-small waves-effect waves-light sidenav-trigger" data-target="slide-out">></a>
-		
+	
 	</body>
 </html>
