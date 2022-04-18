@@ -68,6 +68,7 @@
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+  width: 10em;
 }
 
 /* Add a red background color to navigation links on hover */
@@ -117,34 +118,41 @@
 			</div>
 		
 		</nav>
-		
+		<hr/>
+		<div class="row blue-grey darken-2">
+				<div class="col s12">
          <div class="subnav">
-		 
            <button class="subnavbtn">MATIC</button>
-             <div class="subnav-content">
-                <button id="pair_selector_MATIC_PolyEUBI">PEUBI</button>
+             <div class="subnav-content row">
+                <button id="pair_selector_MATIC_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
              </div>
            </div>
 		   <div class="subnav">
            <button class="subnavbtn">BNB</button>
-             <div class="subnav-content">
-                <button id="pair_selector_BNB_PolyEUBI">PEUBI</button>
+             <div class="subnav-content row">
+                <button id="pair_selector_BNB_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
              </div>
            </div>
 		   <div class="subnav">
-           <button class="subnavbtn">MINTME</button>
-             <div class="subnav-content">
-                <button id="pair_selector_MINTME_MATIC">MATIC</button>
-				<button id="pair_selector_MINTME_BNB">BNB</button>
-				<button id="pair_selector_MINTME_PolyEUBI">PEUBI</button>
-				<button id="pair_selector_MINTME_EUBI">EUBI</button>
-				<button id="pair_selector_MINTME_1000X">1000X</button>
+           <button class="subnavbtn">MintME</button>
+             <div class="subnav-content row">
+                <button id="pair_selector_MintME_MATIC" class="btn waves-effect col s1">MATIC</button>
+				<button id="pair_selector_MintME_BNB" class="btn waves-effect col s1">BNB</button>
+				<button id="pair_selector_MintME_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
+				<button id="pair_selector_MintME_EUBI" class="btn waves-effect col s1">EUBI</button>
+				<button id="pair_selector_MintME_1000X" class="btn waves-effect col s1">1000X</button>
              </div>
            </div>
-           
-	
-		<hr>
-		<div class="row blue-grey darken-2">
+		   <div class="subnav">
+           <button class="subnavbtn">Dai</button>
+             <div class="subnav-content row">
+                <button id="pair_selector_Dai_MintME" class="btn waves-effect col s1">MintME</button>
+				<button id="pair_selector_Dai_MATIC" class="btn waves-effect col s1">MATIC</button>
+				<button id="pair_selector_Dai_PolyEUBI" class="btn waves-effect col s1">PolyEUBI</button>
+				<button id="pair_selector_Dai_BNB" class="btn waves-effect col s1">BNB</button>
+             </div>
+           </div>
+	</div>
 		    <input type="hidden" id="trading_room">
 			<canvas class="col l6 m12 s12" id="tradingchart" style="height: 10em"></canvas>
 			<h6 id="bid_ask"></h6>
@@ -198,7 +206,6 @@
 				<button class="btn waves-effect col s12" id="addLiquidityButton">Add liquidity</button>
 			</div>
 		</div>
-		<a style="z-index: 2021" class="btn-floating btn-small waves-effect waves-light sidenav-trigger" data-target="slide-out">></a>
 	
 	</body>
 </html>
