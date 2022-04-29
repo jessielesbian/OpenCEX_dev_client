@@ -484,6 +484,9 @@ let _main = async function(){
 		//BNB base
 		bindPair("BNB", "PolyEUBI");
 		
+		//test
+		bindPair("shitcoin", "scamcoin");
+		
 		//END trading pair registrations
 		
 		bindPair = undefined;
@@ -668,12 +671,13 @@ let _main = async function(){
 						const token2 = escapeJSON(token);
 						let selectedChain2 = undefined;
 						smartGetElementById("FinalizeTokenWithdrawal").disabled = true;
+						const mcn2 = tokenInfos[token].multichain == 0;
 						if(tokenInfos[token].type == 'lp'){
 							selectedChain2 = "";
 							smartGetElementById("withdrawAddyWrapper").style.display = 'none';
 						} else{
 							smartGetElementById("withdrawAddyWrapper").style.display = 'block';
-							if(tokenInfos[token].multichain == 0){
+							if(mcn2){
 								smartGetElementById("MCDropdown2").style.display = "none";
 							} else{
 								let MintME_selector = async function(){
@@ -691,7 +695,7 @@ let _main = async function(){
 								
 						}
 						smartGetElementById("FinalizeTokenWithdrawal").onclick = async function(){
-							if(selectedChain2 == undefined){
+							if(selectedChain2 == undefined && mcn2){
 								toast("Chain selector fault!");
 								return;
 							}
