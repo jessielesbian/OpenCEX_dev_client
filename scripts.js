@@ -459,6 +459,16 @@ let _main = async function(){
 				primary_converter = get_conv(primary);
 				price_conv = get_price_conv(secondary);
 				selected_sec = secondary;
+				switch(secondary){
+					case "MintME_PUT":
+						smartGetElementById('liquidity_menu').style.display = "none";
+						smartGetElementById('derivatives_menu').style.display = "block";
+						break;
+					default:
+						smartGetElementById('liquidity_menu').style.display = "block";
+						smartGetElementById('derivatives_menu').style.display = "none";
+						break;
+				}
 				reloadChartsFromServer();
 			};
 		};
@@ -487,6 +497,9 @@ let _main = async function(){
 		//BNB base
 		bindPair("BNB", "PolyEUBI");
 		
+		//Derivatives
+		bindPair("MintME", "MintME_PUT");
+		
 		//test
 		bindPair("shitcoin", "scamcoin");
 		
@@ -503,7 +516,13 @@ let _main = async function(){
 		
 		smartGetElementById("addLiquidityButton").onclick = async function(){
 			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "mint_lp", "data": {"primary": "', escapeJSON(selected_pri), '", "secondary": "', escapeJSON(selected_sec), '", "amount0": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_base_amount").value, get_conv(selected_pri))), '", "amount1": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("lp_quote_amount").value, get_conv(selected_sec))), '"}}]'].join("")), async function(){
-				toast("Order placed successfully!");
+				toast("Liquidity added successfully!");
+			});
+		};
+		
+		smartGetElementById("createDerivativesButton").onclick = async function(){
+			bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "mint_derivatives", "data": {"contract": "', escapeJSON(selected_sec), '", "amount": "', escapeJSON(copied_web3_conv2wei(smartGetElementById("derivatives_amount").value, "ether")), '"}}]'].join("")), async function(){
+				toast("Derivatives underwritten successfully!");
 			});
 		};
 		
@@ -548,7 +567,9 @@ let _main = async function(){
 					LP_MintME_Haoma:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					Haoma: {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
 					"LP_MintME_MS-Coin":  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
-					"MS-Coin": {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0}
+					"MS-Coin": {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
+					//NOTE: we use special shenanigans for derivatives.
+					MintME_PUT: {depositable: false, withdrawable: false, type: "lp", multichain: 0}
 				};
 				for(let i = 0; i < e.length; i++){
 					const stri = i.toString();
