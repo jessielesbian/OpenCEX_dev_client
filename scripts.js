@@ -463,10 +463,15 @@ let _main = async function(){
 					case "MintME_PUT":
 						smartGetElementById('liquidity_menu').style.display = "none";
 						smartGetElementById('derivatives_menu').style.display = "block";
+						bindResponseValidatorAndCall('OpenCEX_request_body=' + encodeURIComponent(['[{"method": "mint_derivatives", "data": {"contract": "', escapeJSON(selected_sec), '"}}]'].join("")), async function(pieceofshit){
+							smartGetElementById('DerivativesInformation').innerHTML = ["Strike price: ", copied_web3_conv2dec(pieceofshit[1], "ether"), ", expires on ", new Date(pieceofshit[0]).toString()].join("");
+							
+						});
 						break;
 					default:
 						smartGetElementById('liquidity_menu').style.display = "block";
 						smartGetElementById('derivatives_menu').style.display = "none";
+						smartGetElementById('DerivativesInformation').innerHTML = "Spot market";
 						break;
 				}
 				reloadChartsFromServer();
