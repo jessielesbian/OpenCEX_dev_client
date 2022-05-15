@@ -77,7 +77,9 @@ WestnileOD: Most frontend work
 EUBI: Hosting fees, and marketing in the future
 
 ## About derivatives trading
-### NOTE: All JLEX derivatives are cash-settled!
+Our derivatives trading market is superior to other brokers (e.g PocketOption, IQ Option) since we don't win your losing trades.
+
+<b>NOTE: All JLEX derivatives are pre-collateralized and cash-settled!</b>
 
 ### Put options
 In a put option, the seller pays the buyer if the underlying asset trades below the strike price on expiry. For example, the seller of a Bitcoin put option with a strike price of $60000 will pay the buyer $10000 if bitcoin trades at $50000 on expiry. Put options are great for hedging against underlying asset depreciation.
