@@ -290,6 +290,7 @@ let _main = async function(){
 			case "EUBI":
 			case "1000x":
 			case "CLICK":
+			case "Haoma":
 			case "MS-Coin":
 				return "szabo";
 			default:
@@ -302,6 +303,7 @@ let _main = async function(){
 			case "EUBI":
 			case "1000x":
 			case "CLICK":
+			case "Haoma":
 			case "MS-Coin":
 				return "mether";
 			default:
@@ -473,6 +475,7 @@ let _main = async function(){
 		bindPair("MintME", "1000x");
 		bindPair("MintME", "EUBI");
 		bindPair("MintME", "CLICK");
+		bindPair("MintME", "Haoma");
 		bindPair("MintME", "MS-Coin");
 		
 		//Dai base
@@ -542,6 +545,8 @@ let _main = async function(){
 					LP_shitcoin_scamcoin:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					LP_MintME_CLICK:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					CLICK: {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
+					LP_MintME_Haoma:  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
+					Haoma: {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0},
 					"LP_MintME_MS-Coin":  {depositable: false, withdrawable: true, type: "lp", multichain: 0},
 					"MS-Coin": {depositable: true, withdrawable: true, type: "mintme_erc20", multichain: 0}
 				};
@@ -675,6 +680,7 @@ let _main = async function(){
 						if(tokenInfos[token].type == 'lp'){
 							selectedChain2 = "";
 							smartGetElementById("withdrawAddyWrapper").style.display = 'none';
+							smartGetElementById("MCDropdown2").style.display = "none";
 						} else{
 							smartGetElementById("withdrawAddyWrapper").style.display = 'block';
 							if(mcn2){
